@@ -5,13 +5,9 @@ pub struct Arguments {
     #[arg(long)]
     pub smtp_server: String,
     #[arg(long)]
-    pub smtp_port: u16,
-    #[arg(long)]
     pub smtp_username: String,
     #[arg(long)]
     pub smtp_password: String,
-    #[arg(long)]
-    pub tls: Option<String>,
     #[arg(long)]
     pub from_email: String,
     #[arg(long)]
@@ -29,7 +25,6 @@ pub struct Arguments {
 // -p, --smtp-port           SMTP server port (Default: 587)
 // -u, --smtp-username       Username for SMTP authentication
 // -w, --smtp-password       Password for SMTP authentication
-// -l, --tls-mode            TLS mode (none, tls-skip, tls)
 // -f, --from-email          Email address to send from
 //
 // -c, --config              Path to the SMTP json config file which replaces the above arguments

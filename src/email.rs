@@ -3,8 +3,10 @@ use std::time::Duration;
 use lettre::{Message, SmtpTransport, Transport};
 use lettre::message::header::{ContentType};
 use lettre::transport::smtp::authentication::Credentials;
+use lettre::transport::smtp::client::{Tls, TlsParameters};
+use lettre::transport::smtp::client::TlsVersion::Tlsv13;
 
-pub fn send_mail(smtp_from: String, smtp_host: String, smtp_port: u16, subject: String, message: String, recipients: Vec<String>, username: String, password: String, email_attachment: Option<String>) {
+pub fn send_mail(smtp_from: String, smtp_host: String, subject: String, message: String, recipients: Vec<String>, username: String, password: String, email_attachment: Option<String>) {
 
     recipients.iter().for_each(|recipient| {
         let email = Message::builder()
@@ -21,7 +23,6 @@ pub fn send_mail(smtp_from: String, smtp_host: String, smtp_port: u16, subject: 
 
         let mailer = SmtpTransport::relay(smtp_host.as_str())
             .unwrap()
-            .port(smtp_port)
             .credentials(creds)
             .build();
 

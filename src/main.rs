@@ -11,7 +11,6 @@ fn main() {
     println!("{:?}", arguments);
 
     let smtp_server = arguments.smtp_server;
-    let smtp_port = arguments.smtp_port;
     let smtp_username = arguments.smtp_username;
     let smtp_password = arguments.smtp_password;
     let from_email = arguments.from_email;
@@ -23,5 +22,5 @@ fn main() {
 
 
     let recipients = vec![to_email];
-    send_mail(from_email, smtp_server, smtp_port, email_subject, email_body, recipients, smtp_username, smtp_password, email_attachment);
+    send_mail(from_email, smtp_server, email_subject, email_body, recipients, smtp_username, smtp_password, email_attachment);
 }
