@@ -2,7 +2,6 @@
 
 SendMTP \
  --smtp-server "smtp-relay.gmail.com" \
- --smtp-port "587" \
  --smtp-username "<username>" \
  --smtp-password "<password>" \
  --from-email "noreply <noreply@domain.com>" \
