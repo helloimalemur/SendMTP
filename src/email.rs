@@ -24,6 +24,7 @@ pub fn send_mail(smtp_from: String, smtp_host: String, subject: String, message:
         let mailer = SmtpTransport::relay(smtp_host.as_str())
             .unwrap()
             .credentials(creds)
+            .port(587)
             .build();
 
         match mailer.send(&email) {
