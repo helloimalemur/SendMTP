@@ -1,4 +1,4 @@
-use clap::{Parser};
+use clap::Parser;
 
 #[derive(Parser, Debug)]
 pub struct Arguments {
@@ -19,7 +19,6 @@ pub struct Arguments {
     #[arg(long)]
     pub email_attachment: Option<String>,
 }
-
 
 // -s, --smtp-server         SMTP server for sending emails
 // -p, --smtp-port           SMTP server port (Default: 587)

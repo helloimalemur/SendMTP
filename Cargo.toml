@@ -4,5 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-lettre = "0.11.7"
+mail-send = "0.4.9"
 clap = { version = "4.5.10", features = ["derive"] }
+tokio = { version = "1.0.0", features = ["rt", "rt-multi-thread", "macros"] }

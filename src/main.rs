@@ -1,12 +1,12 @@
-use clap::Parser;
 use crate::email::send_mail;
 use crate::options::Arguments;
+use clap::Parser;
 
-mod options;
 mod email;
+mod options;
 
-fn main() {
-
+#[tokio::main]
+async fn main() {
     let arguments = Arguments::parse();
     println!("{:?}", arguments);
 
@@ -19,8 +19,16 @@ fn main() {
     let email_body = arguments.email_body;
     let email_attachment = arguments.email_attachment;
 
-
-
     let recipients = vec![to_email];
-    send_mail(from_email, smtp_server, email_subject, email_body, recipients, smtp_username, smtp_password, email_attachment);
+    send_mail(
+        from_email,
+        smtp_server,
+        email_subject,
+        email_body,
+        recipients,
+        smtp_username,
+        smtp_password,
+        email_attachment,
+    )
+    .await;
 }
