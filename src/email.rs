@@ -3,8 +3,6 @@ use std::time::Duration;
 use lettre::{Message, SmtpTransport, Transport};
 use lettre::message::header::{ContentType};
 use lettre::transport::smtp::authentication::Credentials;
-use lettre::transport::smtp::client::{Tls, TlsParameters};
-use lettre::transport::smtp::client::TlsVersion::Tlsv13;
 
 pub fn send_mail(smtp_from: String, smtp_host: String, subject: String, message: String, recipients: Vec<String>, username: String, password: String, email_attachment: Option<String>) {
 
@@ -28,7 +26,7 @@ pub fn send_mail(smtp_from: String, smtp_host: String, subject: String, message:
 
         match mailer.send(&email) {
             Err(e) => println!("Could not send email: {e:?}"),
-            Ok(_) => (),
+            Ok(r) => println!("Response: {r:?}"),
         }
         thread::sleep(Duration::new(1, 500000000)); // sleep for 1.5 seconds
     });
